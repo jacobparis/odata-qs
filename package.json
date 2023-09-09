@@ -1,0 +1,31 @@
+{
+  "name": "odata-qs",
+  "version": "1.0.0",
+  "description": "An OData compliant querystring parser",
+  "main": "index.js",
+  "scripts": {
+    "test": "vitest"
+  },
+  "exports": {
+    ".": "./index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jacobparis/odata-qs.git"
+  },
+  "keywords": [
+    "odata"
+  ],
+  "author": "Jacob Paris",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jacobparis/odata-qs/issues"
+  },
+  "homepage": "https://github.com/jacobparis/odata-qs#readme",
+  "dependencies": {
+    "typescript": "^5.2.2"
+  },
+  "devDependencies": {
+    "vitest": "^0.34.4"
+  }
+}
