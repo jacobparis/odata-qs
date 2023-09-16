@@ -1,5 +1,5 @@
 import { describe, test, expect } from "vitest"
-import { parse } from "./parse.js"
+import { deserialize } from "./deserialize.js"
 import { serialize } from "./serialize.js"
 
 describe("parses examples", () => {
@@ -10,6 +10,6 @@ describe("parses examples", () => {
     `Name eq 'Jacob' and ((Age eq 30 or Age eq 40) and (Name eq 'John' or Name eq 'Jacob'))`,
     `(Name eq 'Jacob' and Age eq 30) or ((Age eq 40 and Name eq 'John') or Name eq 'Jacob')`,
   ])("%s", (test) => {
-    expect(serialize(parse(test)!)).toEqual(test)
+    expect(serialize(deserialize(test)!)).toEqual(test)
   })
 })

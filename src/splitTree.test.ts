@@ -1,10 +1,10 @@
 import { describe, test, expect } from "vitest"
-import { parse } from "./parse.js"
+import { deserialize } from "./deserialize.js"
 import { splitTree } from "./tree.js"
 
 describe("parses examples", () => {
   test(`Name eq 'Jacob' and Age eq 30`, (test) => {
-    const tree = parse(test.task.name)
+    const tree = deserialize(test.task.name)
     expect(splitTree(tree, "and")).toEqual([
       {
         subject: "Name",
@@ -20,7 +20,7 @@ describe("parses examples", () => {
   })
 
   test(`Name eq 'Jacob' or Name eq 'John'`, (test) => {
-    const tree = parse(test.task.name)
+    const tree = deserialize(test.task.name)
     expect(splitTree(tree, "or")).toEqual([
       {
         subject: "Name",
@@ -36,7 +36,7 @@ describe("parses examples", () => {
   })
 
   test(`Name eq 'Jacob' and (Age eq 30 or Age eq 40)`, (test) => {
-    const tree = parse(test.task.name)
+    const tree = deserialize(test.task.name)
     expect(splitTree(tree, "and")).toEqual([
       {
         subject: "Name",
@@ -60,7 +60,7 @@ describe("parses examples", () => {
   })
 
   test(`Name eq 'a' or Name eq 'b' or Name eq 'c' or Name eq 'd'`, (test) => {
-    const tree = parse(test.task.name)
+    const tree = deserialize(test.task.name)
     expect(splitTree(tree, "or")).toEqual([
       {
         subject: "Name",

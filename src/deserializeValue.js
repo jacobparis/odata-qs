@@ -1,3 +1,8 @@
+/**
+ * Deserializes a string value to its corresponding JavaScript type.
+ *
+ * @param {string} value - The value to deserialize.
+ */
 export function deserializeValue(value) {
   if (value.startsWith("'") && value.endsWith("'")) {
     return value.substring(1, value.length - 1)

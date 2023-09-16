@@ -1,5 +1,10 @@
 import { isLogical } from "./operators.js"
 
+/**
+ *
+ * @param {import('odata-qs').Expression} expression
+ * @returns {string}
+ */
 export function serialize(expression) {
   const subject =
     typeof expression.subject === "string"
@@ -30,6 +35,11 @@ export function serialize(expression) {
 
   return `${subject} ${expression.operator} ${cleanSerialize(expression.value)}`
 
+  /**
+   *
+   * @param {import('odata-qs').Expression} expression
+   * @returns {string}
+   */
   function cleanSerialize(expression) {
     return isLogical(expression.operator)
       ? `(${serialize(expression)})`

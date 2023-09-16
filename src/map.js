@@ -12,7 +12,16 @@ function isScalar(value) {
   )
 }
 
+/**
+ * @template {string} T
+ * @param {ReadonlyArray<import("odata-qs").Expression>} expressions
+ * @param {Array<T>} [keys]
+ */
 export function getMap(expressions, keys) {
+  /**
+   * @param {string | number | symbol} value
+   * @returns {value is T}
+   */
   function isKey(value) {
     if (typeof value !== "string") return false
     if (!keys) return true
@@ -27,7 +36,9 @@ export function getMap(expressions, keys) {
       throw new Error("Invalid value")
     }
 
+    /** @type {T} */
     const subject = cur.subject
+
     if (!isKey(subject)) {
       throw new Error(`Subject "${subject}" does not match ${keys}`)
     }
@@ -49,5 +60,5 @@ export function getMap(expressions, keys) {
     }
 
     return acc
-  }, {})
+  }, /** @type {Partial<Record<T, Partial<Record<import("odata-qs").ComparisonOperators, import("odata-qs").GroupedExpression>>>>} */ ({}))
 }

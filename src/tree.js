@@ -1,3 +1,8 @@
+/**
+ * @param {import('odata-qs').Expression | null} expression
+ * @param {import('odata-qs').LogicalOperator} operator
+ * @returns {import('odata-qs').Expression[]}
+ */
 export function splitTree(expression, operator) {
   if (!expression) return []
   if (expression.operator === operator) {
@@ -9,6 +14,11 @@ export function splitTree(expression, operator) {
   return [expression]
 }
 
+/**
+ * @param {import('odata-qs').Expression[]} expressions
+ * @param {import('odata-qs').LogicalOperator} operator
+ * @returns {import('odata-qs').Expression}
+ */
 export function joinTree(expressions, operator) {
   if (expressions.length === 1) {
     return expressions[0]
