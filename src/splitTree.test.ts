@@ -3,6 +3,17 @@ import { deserialize } from "./deserialize.js"
 import { splitTree } from "./tree.js"
 
 describe("parses examples", () => {
+  test(`Name eq 'Jacob'`, (test) => {
+    const tree = deserialize(test.task.name)
+    expect(splitTree(tree, "and")).toEqual([
+      {
+        subject: "Name",
+        operator: "eq",
+        value: "Jacob",
+      },
+    ])
+  })
+
   test(`Name eq 'Jacob' and Age eq 30`, (test) => {
     const tree = deserialize(test.task.name)
     expect(splitTree(tree, "and")).toEqual([

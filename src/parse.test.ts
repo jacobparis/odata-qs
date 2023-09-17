@@ -3,7 +3,7 @@ import { parse } from "./parse.js"
 
 describe("parses examples", () => {
   test(`Name eq 'Jacob' and Age eq 30`, (test) => {
-    const tree = parse(test.task.name, "and")
+    const tree = parse(test.task.name)
     expect(tree).toEqual({
       Age: {
         eq: {
@@ -23,7 +23,7 @@ describe("parses examples", () => {
   })
 
   test(`Name eq 'Jacob' or Name eq 'John'`, (test) => {
-    const tree = parse(test.task.name, "or")
+    const tree = parse(test.task.name)
     expect(tree).toEqual({
       Name: {
         eq: {
@@ -36,7 +36,7 @@ describe("parses examples", () => {
   })
 
   test(`Name eq 'a' or Name eq 'b' or Name eq 'c' or Name eq 'd'`, (test) => {
-    const tree = parse(test.task.name, "or")
+    const tree = parse(test.task.name)
     expect(tree).toEqual({
       Name: {
         eq: {
