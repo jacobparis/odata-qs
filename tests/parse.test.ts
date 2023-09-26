@@ -1,5 +1,5 @@
 import { describe, test, expect } from "vitest"
-import { parse } from "./parse.js"
+import { parse } from "../index.js"
 
 describe("parses examples", () => {
   test(`Name eq 'Jacob' and Age eq 30`, (test) => {
@@ -43,6 +43,26 @@ describe("parses examples", () => {
           operator: "eq",
           subject: "Name",
           values: ["a", "b", "c", "d"],
+        },
+      },
+    })
+  })
+
+  test(`Name eq 'Jacob' and (Age eq 30 or Age eq 40)`, (test) => {
+    const tree = parse(test.task.name)
+    expect(tree).toEqual({
+      Age: {
+        eq: {
+          operator: "eq",
+          subject: "Age",
+          values: [30, 40],
+        },
+      },
+      Name: {
+        eq: {
+          operator: "eq",
+          subject: "Name",
+          values: ["Jacob"],
         },
       },
     })

@@ -1,6 +1,5 @@
 import { describe, test, expect } from "vitest"
-import { deserialize } from "./deserialize.js"
-import { serialize } from "./serialize.js"
+import { deserialize, serialize } from "../index.js"
 
 describe("parses examples", () => {
   test.each([

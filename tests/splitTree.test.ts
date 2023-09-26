@@ -1,6 +1,5 @@
 import { describe, test, expect } from "vitest"
-import { deserialize } from "./deserialize.js"
-import { splitTree } from "./tree.js"
+import { deserialize, splitTree } from "../index.js"
 
 describe("parses examples", () => {
   test(`Name eq 'Jacob'`, (test) => {

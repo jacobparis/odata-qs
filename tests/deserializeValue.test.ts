@@ -1,5 +1,5 @@
 import { test, expect } from "vitest"
-import { deserializeValue } from "./deserializeValue.js"
+import { deserializeValue } from "../index.js"
 
 test("returns null for empty input", () => {
   expect(deserializeValue("")).toBeNull()
