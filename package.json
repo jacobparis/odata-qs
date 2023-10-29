@@ -1,8 +1,9 @@
 {
   "name": "odata-qs",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "An OData compliant querystring parser",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "vitest",
     "build": "tsc"
