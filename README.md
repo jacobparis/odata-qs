@@ -8,8 +8,7 @@ An OData compliant querystring parser and serializer
 import { parse } from "odata-qs"
 
 const query = parse(
-  `(name eq 'Jacob' or name eq 'John') and age gt 18 and age lt 65`,
-  "and"
+  `(name eq 'Jacob' or name eq 'John') and age gt 18 and age lt 65`
 )
 
 {
@@ -35,13 +34,12 @@ const query = parse(
 }
 ```
 
-If you want a type-safe result, you can pass a third argument as an array of allowed subjects. If the query contains a subject that isn't in the array, it will throw an error at runtime, and during development you'll get full intellisense support.
+If you want a type-safe result, you can pass a second argument as an array of allowed subjects. If the query contains a subject that isn't in the array, it will throw an error at runtime, and during development you'll get full intellisense support.
 
 ```js
 import { parse } from "odata-qs"
 const filter = parse(
   `(name eq 'Jacob' or name eq 'John') and age gt 18 and age lt 65`,
-  "and",
   ["name", "age"]
 )
 filter.name // ✅
