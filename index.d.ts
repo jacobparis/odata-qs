@@ -77,7 +77,7 @@ export function parse<T>(query: string | null, keys?: T[]): Partial<Record<strin
 export function stringify(groupedValues: Array<GroupedExpression>, options?: {
     operator?: LogicalOperator;
     subOperator?: LogicalOperator;
-}): string;
+}): string | null;
 /**
  *
  * @param {Expression} expression
