@@ -120,4 +120,9 @@ describe("parses examples", () => {
       },
     })
   })
-})
+
+  test("empty expression", () => {
+    const split: Array<Expression> = [];
+    expect(joinTree(split, "and")).toEqual(null);
+  });
+});
