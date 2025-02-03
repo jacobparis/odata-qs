@@ -1,5 +1,5 @@
 import { describe, test, expect } from "vitest"
-import { Expression, joinTree } from "../index.js"
+import { type Expression, joinTree } from "../index.js"
 
 describe("parses examples", () => {
   test(`Name eq 'Jacob'`, () => {
@@ -120,4 +120,9 @@ describe("parses examples", () => {
       },
     })
   })
-})
+
+  test("empty expression", () => {
+    const split: Array<Expression> = [];
+    expect(joinTree(split, "and")).toEqual(null);
+  });
+});

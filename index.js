@@ -394,12 +394,17 @@ export function splitTree(expression, operator) {
 /**
  * @param {Expression[]} expressions
  * @param {LogicalOperator} operator
- * @returns {Expression}
+ * @returns {Expression | null}
  */
 export function joinTree(expressions, operator) {
+  if (expressions.length === 0) {
+    return null
+  }
+
   if (expressions.length === 1) {
     return expressions[0]
   }
+
   const [first, ...rest] = expressions
   return {
     subject: first,
