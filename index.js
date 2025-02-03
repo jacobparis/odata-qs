@@ -254,7 +254,9 @@ export function getValuesFromMap(tree) {
  * @param {LogicalOperator} [operator] - The logical operator to use when joining the expressions.
  */
 export function ungroupValues(groups, operator = "or") {
-  return groups.map((group) => {
+  return groups.filter(group => group.values.some(value => 
+    value !== null && value !== undefined && value !== ''
+  )).map((group) => {
     const expressions = group.values.map((value) => ({
       subject: group.subject,
       operator: group.operator,
@@ -326,7 +328,7 @@ export function parse(query, keys) {
 export function stringify(groupedValues, options = {}) {
   const ungrouped = ungroupValues(groupedValues, options.subOperator || "or")
   const joined = joinTree(ungrouped, options.operator || "and")
-  return serialize(joined)
+  return joined ? serialize(joined) : null
 }
 
 /**
@@ -341,7 +343,7 @@ export function serialize(expression) {
       : cleanSerialize(expression.subject)
 
   if (!expression.value) {
-    return null;
+    throw new Error("Invalid expression value")
   }
 
   if (typeof expression.value === "string") {

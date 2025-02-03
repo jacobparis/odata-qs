@@ -11,14 +11,4 @@ describe("parses examples", () => {
   ])("%s", (test) => {
     expect(serialize(deserialize(test)!)).toEqual(test)
   })
-
-  test('empty value', () => {
-    const expression: Expression = {
-      subject: "Name",
-      operator: "eq",
-      value: '',
-    }
-
-    expect(serialize(expression)).toEqual(null)
-  })
 })
