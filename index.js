@@ -341,7 +341,7 @@ export function serialize(expression) {
       : cleanSerialize(expression.subject)
 
   if (!expression.value) {
-    throw new Error("Invalid expression value")
+    return null;
   }
 
   if (typeof expression.value === "string") {
